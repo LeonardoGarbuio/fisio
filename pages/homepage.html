@@ -6,6 +6,117 @@
     <title>INTENSIFISIO - Fisioterapia Avançada | Movimento é Vida</title>
     <meta name="description" content="INTENSIFISIO - Clínica de fisioterapia premium que combina expertise médica com inovação tecnológica. Especialistas em reabilitação ortopédica, esportiva e neurológica." />
     <link rel="stylesheet" href="../css/main.css" />
+    <style>
+        /* Services Dropdown Styles */
+        .services-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 12px;
+            width: 380px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.05);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 50;
+            backdrop-filter: blur(10px);
+        }
+        
+        .services-group:hover .services-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .services-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 16px 20px;
+            border-radius: 12px;
+            margin: 4px 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .services-dropdown-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: linear-gradient(135deg, #E31E24, #ff4757);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .services-dropdown-item:hover {
+            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .services-dropdown-item:hover::before {
+            transform: scaleY(1);
+        }
+        
+        .services-dropdown-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #E31E24, #ff4757);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .services-dropdown-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+            border-radius: 10px;
+        }
+        
+        .services-dropdown-icon svg {
+            width: 20px;
+            height: 20px;
+            color: white;
+            z-index: 1;
+            position: relative;
+        }
+        
+        .services-dropdown-content {
+            flex: 1;
+        }
+        
+        .services-dropdown-title {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 4px;
+            font-size: 15px;
+            letter-spacing: -0.025em;
+        }
+        
+        .services-dropdown-description {
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.4;
+        }
+    </style>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fftphysio6226back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
@@ -17,37 +128,149 @@
             <div class="flex items-center justify-between">
                 <!-- Logo -->
                 <div class="flex items-center space-x-3">
-                    <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
-                        <svg class="w-8 h-8 text-secondary" viewBox="0 0 32 32" fill="currentColor">
-                            <path d="M4 16h4l2-8 4 16 2-8 4 8h4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <h1 class="font-poppins font-bold text-xl text-primary">INTENSIFISIO</h1>
-                        <p class="text-xs text-text-secondary">Movimento é Vida</p>
+                    <svg class="w-12 h-12 text-red-500" viewBox="0 0 32 32" fill="currentColor">
+                        <path d="M4 16h4l2-8 4 16 2-8 4 8h4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <div class="flex flex-col items-start">
+                        <div class="flex items-center">
+                            <!-- Logo INTENSIFISIO como imagem PNG -->
+                            <img src="../images/0.png" alt="INTENSIFISIO" class="h-16 w-80">
+                        </div>
+                        <p class="text-xs text-text-secondary mt-1">intensidade é nossa essência</p>
                     </div>
                 </div>
 
                 <!-- Desktop Navigation -->
                 <div class="hidden lg:flex items-center space-x-8">
                     <a href="homepage.html" class="font-inter font-medium text-primary hover:text-accent transition-colors duration-300">Início</a>
-                    <div class="relative group">
+                    <div class="relative services-group">
                         <a href="services.html" class="font-inter font-medium text-text-primary hover:text-accent transition-colors duration-300 flex items-center">
                             Serviços
                             <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                             </svg>
                         </a>
+                        <!-- Services Dropdown Menu -->
+                        <div class="services-dropdown">
+                            <div class="p-4">
+                                <div class="grid grid-cols-1 gap-2">
+                                    <a href="services.html" class="services-dropdown-item">
+                                        <div class="services-dropdown-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/>
+                                                <path d="M9 9h.01M9 15h.01M15 9h.01M15 15h.01"/>
+                                            </svg>
+                                        </div>
+                                        <div class="services-dropdown-content">
+                                            <div class="services-dropdown-title">Fisioterapia Hospitalar</div>
+                                            <div class="services-dropdown-description">Atendimento em ambiente hospitalar</div>
+                                        </div>
+                                    </a>
+                                    <a href="services.html" class="services-dropdown-item">
+                                        <div class="services-dropdown-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                                <polyline points="9,22 9,12 15,12 15,22"/>
+                                            </svg>
+                                        </div>
+                                        <div class="services-dropdown-content">
+                                            <div class="services-dropdown-title">Fisioterapia Domiciliar</div>
+                                            <div class="services-dropdown-description">Cuidados no conforto do lar</div>
+                                        </div>
+                                    </a>
+                                    <a href="services.html" class="services-dropdown-item">
+                                        <div class="services-dropdown-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                            </svg>
+                                        </div>
+                                        <div class="services-dropdown-content">
+                                            <div class="services-dropdown-title">Reabilitação Cardiorrespiratória</div>
+                                            <div class="services-dropdown-description">Programa cardíaco e pulmonar</div>
+                                        </div>
+                                    </a>
+                                    <a href="services.html" class="services-dropdown-item">
+                                        <div class="services-dropdown-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <circle cx="12" cy="12" r="3"/>
+                                                <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"/>
+                                            </svg>
+                                        </div>
+                                        <div class="services-dropdown-content">
+                                            <div class="services-dropdown-title">Hipnose</div>
+                                            <div class="services-dropdown-description">Técnica terapêutica complementar</div>
+                                        </div>
+                                    </a>
+                                    <a href="services.html" class="services-dropdown-item">
+                                        <div class="services-dropdown-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1 .34-4.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/>
+                                                <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0-.34-4.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/>
+                                            </svg>
+                                        </div>
+                                        <div class="services-dropdown-content">
+                                            <div class="services-dropdown-title">Neurologia</div>
+                                            <div class="services-dropdown-description">Distúrbios neurológicos</div>
+                                        </div>
+                                    </a>
+                                    <a href="services.html" class="services-dropdown-item">
+                                        <div class="services-dropdown-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                                <circle cx="12" cy="7" r="4"/>
+                                            </svg>
+                                        </div>
+                                        <div class="services-dropdown-content">
+                                            <div class="services-dropdown-title">Pediatria</div>
+                                            <div class="services-dropdown-description">Cuidados para bebês e crianças</div>
+                                        </div>
+                                    </a>
+                                    <a href="services.html" class="services-dropdown-item">
+                                        <div class="services-dropdown-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                            </svg>
+                                        </div>
+                                        <div class="services-dropdown-content">
+                                            <div class="services-dropdown-title">Ortopedia</div>
+                                            <div class="services-dropdown-description">Lesões musculoesqueléticas</div>
+                                        </div>
+                                    </a>
+                                    <a href="services.html" class="services-dropdown-item">
+                                        <div class="services-dropdown-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                            </svg>
+                                        </div>
+                                        <div class="services-dropdown-content">
+                                            <div class="services-dropdown-title">Reumatologia</div>
+                                            <div class="services-dropdown-description">Doenças reumáticas</div>
+                                        </div>
+                                    </a>
+                                    <a href="services.html" class="services-dropdown-item">
+                                        <div class="services-dropdown-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                                <circle cx="12" cy="7" r="4"/>
+                                            </svg>
+                                        </div>
+                                        <div class="services-dropdown-content">
+                                            <div class="services-dropdown-title">Cuidado com Idosos</div>
+                                            <div class="services-dropdown-description">Atendimento especializado</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <a href="about.html" class="font-inter font-medium text-text-primary hover:text-accent transition-colors duration-300">Sobre</a>
                     <a href="team.html" class="font-inter font-medium text-text-primary hover:text-accent transition-colors duration-300">Equipe</a>
-                    <a href="patient_portal.html" class="font-inter font-medium text-text-primary hover:text-accent transition-colors duration-300">Portal</a>
                     <a href="contact.html" class="font-inter font-medium text-text-primary hover:text-accent transition-colors duration-300">Contato</a>
                 </div>
 
                 <!-- CTA Button -->
                 <div class="hidden lg:block">
-                    <a href="patient_portal.html" class="btn-primary">
+                    <a href="contact.html" class="btn-primary">
                         Agendar Consulta
                     </a>
                 </div>
@@ -67,10 +290,9 @@
                     <a href="services.html" class="block px-3 py-2 text-text-primary hover:text-accent">Serviços</a>
                     <a href="about.html" class="block px-3 py-2 text-text-primary hover:text-accent">Sobre</a>
                     <a href="team.html" class="block px-3 py-2 text-text-primary hover:text-accent">Equipe</a>
-                    <a href="patient_portal.html" class="block px-3 py-2 text-text-primary hover:text-accent">Portal</a>
                     <a href="contact.html" class="block px-3 py-2 text-text-primary hover:text-accent">Contato</a>
                     <div class="pt-2">
-                        <a href="patient_portal.html" class="btn-primary w-full text-center block">Agendar Consulta</a>
+                        <a href="contact.html" class="btn-primary w-full text-center block">Agendar Consulta</a>
                     </div>
                 </div>
             </div>
@@ -86,26 +308,22 @@
 
         <!-- Hero Content -->
         <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
-            <!-- Animated FT Logo -->
+            <!-- Giant INTENSIFISIO Logo -->
             <div class="mb-8 animate-fade-in">
-                <div class="w-32 h-32 mx-auto bg-primary rounded-2xl flex items-center justify-center shadow-unfreezing transform-unfreezing">
-                    <svg class="w-20 h-20 text-secondary" viewBox="0 0 80 80" fill="currentColor">
-                        <path d="M20 10h40v10H40v50h-10V20H20V10z"/>
-                        <path d="M10 30h30v10H10V30z"/>
-                        <circle cx="65" cy="65" r="3" fill="#E31E24"/>
-                    </svg>
+                <div class="flex justify-center">
+                    <img src="../images/0.png" alt="INTENSIFISIO" class="h-80 lg:h-96 xl:h-[28rem] 2xl:h-[32rem] w-auto">
                 </div>
             </div>
 
-            <h1 class="font-poppins font-bold text-5xl lg:text-7xl text-primary mb-6 text-shadow animate-slide-up">
-                Movimento é <span class="text-accent">Vida</span>
+            <h1 class="font-poppins font-bold text-4xl lg:text-5xl text-primary mb-6 text-shadow animate-slide-up">
+                Intensidade é nossa essência
             </h1>
             <p class="font-inter text-xl lg:text-2xl text-text-secondary mb-8 max-w-2xl mx-auto animate-slide-up">
                 Onde expertise médica encontra inovação tecnológica para transformar sua recuperação em uma jornada de superação.
             </p>
 
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up">
-                <a href="patient_portal.html" class="btn-primary text-lg px-8 py-4">
+                <a href="contact.html" class="btn-primary text-lg px-8 py-4">
                     Agendar Avaliação Gratuita
                 </a>
                 <a href="about.html" class="btn-secondary text-lg px-8 py-4">
@@ -161,7 +379,7 @@
                                 Protocolos de alívio rápido
                             </div>
                         </div>
-                        <a href="patient_portal.html" class="btn-primary w-full">Agendar Urgente</a>
+                        <a href="contact.html" class="btn-primary w-full">Agendar Urgente</a>
                     </div>
                 </div>
 
@@ -191,7 +409,7 @@
                                 Planos personalizados
                             </div>
                         </div>
-                        <a href="patient_portal.html" class="btn-primary w-full">Avaliar Performance</a>
+                        <a href="contact.html" class="btn-primary w-full">Avaliar Performance</a>
                     </div>
                 </div>
 
@@ -221,7 +439,7 @@
                                 Exercícios personalizados
                             </div>
                         </div>
-                        <a href="patient_portal.html" class="btn-primary w-full">Iniciar Prevenção</a>
+                        <a href="contact.html" class="btn-primary w-full">Iniciar Prevenção</a>
                     </div>
                 </div>
             </div>
@@ -439,7 +657,7 @@
                 Agende sua avaliação gratuita e descubra como podemos ajudar você a recuperar seu movimento e qualidade de vida.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="patient_portal.html" class="btn-primary bg-accent hover:bg-accent/90">
+                <a href="contact.html" class="btn-primary bg-accent hover:bg-accent/90">
                     Agendar Avaliação Gratuita
                 </a>
                 <a href="contact.html" class="btn-secondary bg-transparent border-secondary text-secondary hover:bg-secondary hover:text-primary">
@@ -456,13 +674,22 @@
                 <!-- Company Info -->
                 <div>
                     <div class="flex items-center space-x-3 mb-6">
-                        <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                            <svg class="w-6 h-6 text-secondary" viewBox="0 0 32 32" fill="currentColor">
-                                <path d="M4 16h4l2-8 4 16 2-8 4 8h4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="font-poppins font-bold text-lg text-primary">INTENSIFISIO</h3>
+                        <svg class="w-10 h-10 text-red-500" viewBox="0 0 32 32" fill="currentColor">
+                            <path d="M4 16h4l2-8 4 16 2-8 4 8h4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <div class="flex flex-col items-start">
+                            <div class="flex items-center">
+                                <svg class="w-48 h-8" viewBox="0 0 200 24" fill="none">
+                                    <!-- Texto INTENSIFISIO com cardiograma substituindo NS -->
+                                    <text x="0" y="18" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1a1a1a">INTE</text>
+                                    <!-- Cardiograma vermelho substituindo N - formato angular -->
+                                    <path d="M36 18 L36 6 L42 6 L42 12 L48 12 L48 18" stroke="#dc2626" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <!-- Cardiograma vermelho substituindo S - formato curvo -->
+                                    <path d="M48 12 C48 8, 54 8, 54 12 C54 16, 60 16, 60 12" stroke="#dc2626" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <text x="60" y="18" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1a1a1a">IFISIO</text>
+                                </svg>
+                            </div>
+                            <p class="text-xs text-text-secondary mt-1">intensidade é nossa essência</p>
                         </div>
                     </div>
                     <p class="font-inter text-text-secondary mb-4">
@@ -507,7 +734,7 @@
                         <li><a href="team.html" class="font-inter text-text-secondary hover:text-accent transition-colors">Equipe</a></li>
                         <li><a href="about.html" class="font-inter text-text-secondary hover:text-accent transition-colors">Metodologia</a></li>
                         <li><a href="contact.html" class="font-inter text-text-secondary hover:text-accent transition-colors">Localização</a></li>
-                        <li><a href="patient_portal.html" class="font-inter text-text-secondary hover:text-accent transition-colors">Portal do Paciente</a></li>
+                        <li><a href="contact.html" class="font-inter text-text-secondary hover:text-accent transition-colors">Contato</a></li>
                     </ul>
                 </div>
 

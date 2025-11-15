@@ -6,6 +6,117 @@
     <title>Sobre Nós - INTENSIFISIO | Nossa História e Metodologia</title>
     <meta name="description" content="Conheça a história da INTENSIFISIO, nossa metodologia inovadora e equipe especializada. Pioneiros em fisioterapia que combinam expertise médica com tecnologia avançada." />
     <link rel="stylesheet" href="../css/main.css" />
+    <style>
+        /* Services Dropdown Styles */
+        .services-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 12px;
+            width: 380px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.05);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 50;
+            backdrop-filter: blur(10px);
+        }
+        
+        .services-group:hover .services-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .services-dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 16px 20px;
+            border-radius: 12px;
+            margin: 4px 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .services-dropdown-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: linear-gradient(135deg, #E31E24, #ff4757);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .services-dropdown-item:hover {
+            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .services-dropdown-item:hover::before {
+            transform: scaleY(1);
+        }
+        
+        .services-dropdown-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #E31E24, #ff4757);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .services-dropdown-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+            border-radius: 10px;
+        }
+        
+        .services-dropdown-icon svg {
+            width: 20px;
+            height: 20px;
+            color: white;
+            z-index: 1;
+            position: relative;
+        }
+        
+        .services-dropdown-content {
+            flex: 1;
+        }
+        
+        .services-dropdown-title {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 4px;
+            font-size: 15px;
+            letter-spacing: -0.025em;
+        }
+        
+        .services-dropdown-description {
+            font-size: 13px;
+            color: #64748b;
+            line-height: 1.4;
+        }
+    </style>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fftphysio6226back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
@@ -17,37 +128,149 @@
             <div class="flex items-center justify-between">
                 <!-- Logo -->
                 <div class="flex items-center space-x-3">
-                    <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
-                        <svg class="w-8 h-8 text-secondary" viewBox="0 0 32 32" fill="currentColor">
-                            <path d="M4 16h4l2-8 4 16 2-8 4 8h4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <h1 class="font-poppins font-bold text-xl text-primary">INTENSIFISIO</h1>
-                        <p class="text-xs text-text-secondary">Movimento é Vida</p>
+                    <svg class="w-12 h-12 text-red-500" viewBox="0 0 32 32" fill="currentColor">
+                        <path d="M4 16h4l2-8 4 16 2-8 4 8h4" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <div class="flex flex-col items-start">
+                        <div class="flex items-center">
+                            <!-- Logo INTENSIFISIO como imagem PNG -->
+                            <img src="../images/0.png" alt="INTENSIFISIO" class="h-16 w-80">
+                        </div>
+                        <p class="text-xs text-text-secondary mt-1">intensidade é nossa essência</p>
                     </div>
                 </div>
 
                 <!-- Desktop Navigation -->
                 <div class="hidden lg:flex items-center space-x-8">
                     <a href="homepage.html" class="font-inter font-medium text-text-primary hover:text-accent transition-colors duration-300">Início</a>
-                    <div class="relative group">
+                    <div class="relative services-group">
                         <a href="services.html" class="font-inter font-medium text-text-primary hover:text-accent transition-colors duration-300 flex items-center">
                             Serviços
                             <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                             </svg>
                         </a>
+                        <!-- Services Dropdown Menu -->
+                        <div class="services-dropdown">
+                            <div class="p-4">
+                                <div class="grid grid-cols-1 gap-2">
+                                    <a href="services.html" class="services-dropdown-item">
+                                        <div class="services-dropdown-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/>
+                                                <path d="M9 9h.01M9 15h.01M15 9h.01M15 15h.01"/>
+                                            </svg>
+                                        </div>
+                                        <div class="services-dropdown-content">
+                                            <div class="services-dropdown-title">Fisioterapia Hospitalar</div>
+                                            <div class="services-dropdown-description">Atendimento em ambiente hospitalar</div>
+                                        </div>
+                                    </a>
+                                    <a href="services.html" class="services-dropdown-item">
+                                        <div class="services-dropdown-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                                <polyline points="9,22 9,12 15,12 15,22"/>
+                                            </svg>
+                                        </div>
+                                        <div class="services-dropdown-content">
+                                            <div class="services-dropdown-title">Fisioterapia Domiciliar</div>
+                                            <div class="services-dropdown-description">Cuidados no conforto do lar</div>
+                                        </div>
+                                    </a>
+                                    <a href="services.html" class="services-dropdown-item">
+                                        <div class="services-dropdown-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                            </svg>
+                                        </div>
+                                        <div class="services-dropdown-content">
+                                            <div class="services-dropdown-title">Reabilitação Cardiorrespiratória</div>
+                                            <div class="services-dropdown-description">Programa cardíaco e pulmonar</div>
+                                        </div>
+                                    </a>
+                                    <a href="services.html" class="services-dropdown-item">
+                                        <div class="services-dropdown-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <circle cx="12" cy="12" r="3"/>
+                                                <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"/>
+                                            </svg>
+                                        </div>
+                                        <div class="services-dropdown-content">
+                                            <div class="services-dropdown-title">Hipnose</div>
+                                            <div class="services-dropdown-description">Técnica terapêutica complementar</div>
+                                        </div>
+                                    </a>
+                                    <a href="services.html" class="services-dropdown-item">
+                                        <div class="services-dropdown-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1 .34-4.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/>
+                                                <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0-.34-4.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/>
+                                            </svg>
+                                        </div>
+                                        <div class="services-dropdown-content">
+                                            <div class="services-dropdown-title">Neurologia</div>
+                                            <div class="services-dropdown-description">Distúrbios neurológicos</div>
+                                        </div>
+                                    </a>
+                                    <a href="services.html" class="services-dropdown-item">
+                                        <div class="services-dropdown-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                                <circle cx="12" cy="7" r="4"/>
+                                            </svg>
+                                        </div>
+                                        <div class="services-dropdown-content">
+                                            <div class="services-dropdown-title">Pediatria</div>
+                                            <div class="services-dropdown-description">Cuidados para bebês e crianças</div>
+                                        </div>
+                                    </a>
+                                    <a href="services.html" class="services-dropdown-item">
+                                        <div class="services-dropdown-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                            </svg>
+                                        </div>
+                                        <div class="services-dropdown-content">
+                                            <div class="services-dropdown-title">Ortopedia</div>
+                                            <div class="services-dropdown-description">Lesões musculoesqueléticas</div>
+                                        </div>
+                                    </a>
+                                    <a href="services.html" class="services-dropdown-item">
+                                        <div class="services-dropdown-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                            </svg>
+                                        </div>
+                                        <div class="services-dropdown-content">
+                                            <div class="services-dropdown-title">Reumatologia</div>
+                                            <div class="services-dropdown-description">Doenças reumáticas</div>
+                                        </div>
+                                    </a>
+                                    <a href="services.html" class="services-dropdown-item">
+                                        <div class="services-dropdown-icon">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                                <circle cx="12" cy="7" r="4"/>
+                                            </svg>
+                                        </div>
+                                        <div class="services-dropdown-content">
+                                            <div class="services-dropdown-title">Cuidado com Idosos</div>
+                                            <div class="services-dropdown-description">Atendimento especializado</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <a href="about.html" class="font-inter font-medium text-primary hover:text-accent transition-colors duration-300">Sobre</a>
                     <a href="team.html" class="font-inter font-medium text-text-primary hover:text-accent transition-colors duration-300">Equipe</a>
-                    <a href="patient_portal.html" class="font-inter font-medium text-text-primary hover:text-accent transition-colors duration-300">Portal</a>
                     <a href="contact.html" class="font-inter font-medium text-text-primary hover:text-accent transition-colors duration-300">Contato</a>
                 </div>
 
                 <!-- CTA Button -->
                 <div class="hidden lg:block">
-                    <a href="patient_portal.html" class="btn-primary">
+                    <a href="contact.html" class="btn-primary">
                         Agendar Consulta
                     </a>
                 </div>
@@ -67,10 +290,9 @@
                     <a href="services.html" class="block px-3 py-2 text-text-primary hover:text-accent">Serviços</a>
                     <a href="about.html" class="block px-3 py-2 text-primary font-medium">Sobre</a>
                     <a href="team.html" class="block px-3 py-2 text-text-primary hover:text-accent">Equipe</a>
-                    <a href="patient_portal.html" class="block px-3 py-2 text-text-primary hover:text-accent">Portal</a>
                     <a href="contact.html" class="block px-3 py-2 text-text-primary hover:text-accent">Contato</a>
                     <div class="pt-2">
-                        <a href="patient_portal.html" class="btn-primary w-full text-center block">Agendar Consulta</a>
+                        <a href="contact.html" class="btn-primary w-full text-center block">Agendar Consulta</a>
                     </div>
                 </div>
             </div>
@@ -78,7 +300,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background to-surface pt-20">
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background to-surface pt-48">
         <!-- Animated Background -->
         <div class="absolute inset-0 opacity-20">
             <div class="absolute top-20 left-10 w-32 h-32 bg-accent/10 rounded-full animate-pulse"></div>
@@ -88,12 +310,13 @@
 
         <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
             <div class="mb-8">
+                <div class="h-40"></div>
                 <h1 class="font-poppins font-bold text-5xl lg:text-7xl text-primary mb-6 text-shadow animate-slide-up">
                     Nossa <span class="text-accent">História</span>
                 </h1>
                 <p class="font-inter text-xl lg:text-2xl text-text-secondary mb-8 max-w-3xl mx-auto animate-slide-up">
-                    Pioneiros em fisioterapia que transcendem os limites tradicionais da medicina, 
-                    combinando expertise clínica com inovação tecnológica desde 2010.
+                    Empresa Pontagrossense que está há muitos anos no mercado de fisioterapia, 
+                    prestando serviços de qualidade à população dos Campos Gerais.
                 </p>
             </div>
 
@@ -107,353 +330,184 @@
                     </div>
                 </div>
                 <h2 class="font-poppins font-semibold text-2xl text-primary mb-4">
-                    FT: Fisioterapia & Forward Thinking
+                    Nossos Valores
                 </h2>
                 <p class="font-inter text-text-secondary text-lg leading-relaxed">
-                    Acreditamos que a cura é tanto uma ciência quanto uma arte. Nossa missão é "descongelar" 
-                    as limitações físicas, restaurando não apenas o movimento, mas a vitalidade e a confiança 
-                    de cada paciente através de abordagens inovadoras e cuidado humanizado.
+                    <strong>Deus, família, dedicação e respeito!</strong> Estes são os pilares que norteiam nossa atuação, 
+                    garantindo um atendimento humanizado e de qualidade para todos os nossos pacientes.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- Timeline Section -->
+    <!-- Nossa História -->
     <section class="py-20 bg-secondary">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="font-poppins font-bold text-4xl text-primary mb-4">
-                    Evolução <span class="text-accent">Contínua</span>
+                    Nossa <span class="text-accent">História</span>
                 </h2>
                 <p class="font-inter text-lg text-text-secondary max-w-2xl mx-auto">
-                    Uma jornada de transformação que redefiniu os padrões da fisioterapia moderna
+                    Uma trajetória de dedicação e compromisso com a saúde da população dos Campos Gerais
                 </p>
             </div>
 
-            <div class="relative">
-                <!-- Timeline Line -->
-                <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-border"></div>
-                
-                <!-- Timeline Items -->
-                <div class="space-y-16">
-                    <!-- 2010 - Fundação -->
-                    <div class="relative flex items-center">
-                        <div class="w-1/2 pr-8 text-right">
-                            <div class="card transform-unfreezing">
-                                <div class="flex items-center justify-end mb-4">
-                                    <div class="text-right mr-4">
-                                        <h3 class="font-poppins font-semibold text-xl text-primary">Fundação</h3>
-                                        <p class="text-accent font-semibold">2010</p>
-                                    </div>
-                                    <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
-                                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H3m2 0h3M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <p class="font-inter text-text-secondary">
-                                    Abertura da primeira unidade com foco em fisioterapia ortopédica tradicional, 
-                                    estabelecendo as bases para uma abordagem diferenciada no cuidado ao paciente.
-                                </p>
-                            </div>
+            <div class="max-w-4xl mx-auto">
+                <div class="card">
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h3 class="font-poppins font-semibold text-2xl text-primary mb-6">
+                                Tradição e Qualidade
+                            </h3>
+                            <p class="font-inter text-text-secondary mb-4">
+                                A INTENSIFISIO é uma empresa pontagrossense que está há muitos anos no mercado de fisioterapia, 
+                                prestando serviços de qualidade à população dos Campos Gerais.
+                            </p>
+                            <p class="font-inter text-text-secondary mb-4">
+                                Nossa experiência e dedicação nos tornaram referência na região, sempre priorizando 
+                                o bem-estar e a qualidade de vida dos nossos pacientes.
+                            </p>
+                            <p class="font-inter text-text-secondary">
+                                Atuamos em hospitais, atendimento domiciliar e ambulatorial, oferecendo um cuidado 
+                                completo e personalizado para cada necessidade.
+                            </p>
                         </div>
-                        <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-accent rounded-full border-4 border-secondary"></div>
-                        <div class="w-1/2 pl-8"></div>
-                    </div>
-
-                    <!-- 2015 - Expansão Tecnológica -->
-                    <div class="relative flex items-center">
-                        <div class="w-1/2 pr-8"></div>
-                        <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-accent rounded-full border-4 border-secondary"></div>
-                        <div class="w-1/2 pl-8">
-                            <div class="card transform-unfreezing">
-                                <div class="flex items-center mb-4">
-                                    <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mr-4">
-                                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h3 class="font-poppins font-semibold text-xl text-primary">Inovação Tecnológica</h3>
-                                        <p class="text-accent font-semibold">2015</p>
-                                    </div>
-                                </div>
-                                <p class="font-inter text-text-secondary">
-                                    Implementação de análise biomecânica 3D e equipamentos de última geração, 
-                                    revolucionando o diagnóstico e tratamento personalizado.
-                                </p>
-                            </div>
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Equipe INTENSIFISIO" class="w-full h-80 object-cover rounded-card shadow-card" loading="lazy" onerror="this.src='https://images.pexels.com/photos/6111616/pexels-photo-6111616.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'; this.onerror=null;" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-card"></div>
                         </div>
-                    </div>
-
-                    <!-- 2018 - Certificação Internacional -->
-                    <div class="relative flex items-center">
-                        <div class="w-1/2 pr-8 text-right">
-                            <div class="card transform-unfreezing">
-                                <div class="flex items-center justify-end mb-4">
-                                    <div class="text-right mr-4">
-                                        <h3 class="font-poppins font-semibold text-xl text-primary">Certificação Internacional</h3>
-                                        <p class="text-accent font-semibold">2018</p>
-                                    </div>
-                                    <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
-                                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <p class="font-inter text-text-secondary">
-                                    Reconhecimento internacional com certificações em técnicas avançadas 
-                                    e parcerias com instituições de pesquisa europeias.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-accent rounded-full border-4 border-secondary"></div>
-                        <div class="w-1/2 pl-8"></div>
-                    </div>
-
-                    <!-- 2022 - Portal Digital -->
-                    <div class="relative flex items-center">
-                        <div class="w-1/2 pr-8"></div>
-                        <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-accent rounded-full border-4 border-secondary"></div>
-                        <div class="w-1/2 pl-8">
-                            <div class="card transform-unfreezing">
-                                <div class="flex items-center mb-4">
-                                    <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mr-4">
-                                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <h3 class="font-poppins font-semibold text-xl text-primary">Era Digital</h3>
-                                        <p class="text-accent font-semibold">2022</p>
-                                    </div>
-                                </div>
-                                <p class="font-inter text-text-secondary">
-                                    Lançamento do portal digital integrado com telemedicina, 
-                                    acompanhamento remoto e inteligência artificial para otimização de tratamentos.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 2025 - Presente -->
-                    <div class="relative flex items-center">
-                        <div class="w-1/2 pr-8 text-right">
-                            <div class="card transform-unfreezing bg-gradient-to-r from-accent/5 to-primary/5">
-                                <div class="flex items-center justify-end mb-4">
-                                    <div class="text-right mr-4">
-                                        <h3 class="font-poppins font-semibold text-xl text-primary">Liderança Nacional</h3>
-                                        <p class="text-accent font-semibold">2025</p>
-                                    </div>
-                                    <div class="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center">
-                                        <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <p class="font-inter text-text-secondary">
-                                    Referência nacional em fisioterapia inovadora, com mais de 5.000 pacientes 
-                                    recuperados e metodologia própria reconhecida internacionalmente.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-accent rounded-full border-4 border-secondary animate-pulse"></div>
-                        <div class="w-1/2 pl-8"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Methodology Section -->
+    <!-- Missão, Visão e Valores -->
     <section class="py-20 bg-background">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="font-poppins font-bold text-4xl text-primary mb-4">
-                    Metodologia <span class="text-accent">FT</span>
+                    Nossos <span class="text-accent">Pilares</span>
                 </h2>
                 <p class="font-inter text-lg text-text-secondary max-w-2xl mx-auto">
-                    Nossa abordagem holística combina ciência, tecnologia e cuidado humanizado
+                    Os fundamentos que guiam nossa atuação e definem nosso compromisso com a excelência
                 </p>
             </div>
 
-            <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
-                <div class="space-y-8">
-                    <div class="methodology-step" data-step="1">
-                        <div class="flex items-start space-x-4">
-                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center flex-shrink-0 methodology-icon">
-                                <span class="text-secondary font-poppins font-bold text-xl">1</span>
-                            </div>
-                            <div>
-                                <h3 class="font-poppins font-semibold text-xl text-primary mb-2">Avaliação Integral 360°</h3>
-                                <p class="font-inter text-text-secondary">
-                                    Análise biomecânica completa utilizando tecnologia 3D, avaliação postural 
-                                    computadorizada e testes funcionais específicos para identificar a raiz do problema.
-                                </p>
-                            </div>
-                        </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Missão -->
+                <div class="card text-center transform-unfreezing">
+                    <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                        </svg>
                     </div>
-
-                    <div class="methodology-step" data-step="2">
-                        <div class="flex items-start space-x-4">
-                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center flex-shrink-0 methodology-icon">
-                                <span class="text-secondary font-poppins font-bold text-xl">2</span>
-                            </div>
-                            <div>
-                                <h3 class="font-poppins font-semibold text-xl text-primary mb-2">Protocolo Personalizado</h3>
-                                <p class="font-inter text-text-secondary">
-                                    Desenvolvimento de plano terapêutico único baseado em evidências científicas, 
-                                    histórico pessoal e objetivos específicos de cada paciente.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="methodology-step" data-step="3">
-                        <div class="flex items-start space-x-4">
-                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center flex-shrink-0 methodology-icon">
-                                <span class="text-secondary font-poppins font-bold text-xl">3</span>
-                            </div>
-                            <div>
-                                <h3 class="font-poppins font-semibold text-xl text-primary mb-2">Tratamento Integrado</h3>
-                                <p class="font-inter text-text-secondary">
-                                    Combinação de técnicas manuais tradicionais com tecnologias avançadas, 
-                                    incluindo dry needling, terapia por ondas de choque e realidade virtual.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="methodology-step" data-step="4">
-                        <div class="flex items-start space-x-4">
-                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center flex-shrink-0 methodology-icon">
-                                <span class="text-secondary font-poppins font-bold text-xl">4</span>
-                            </div>
-                            <div>
-                                <h3 class="font-poppins font-semibold text-xl text-primary mb-2">Monitoramento Contínuo</h3>
-                                <p class="font-inter text-text-secondary">
-                                    Acompanhamento digital da evolução com métricas objetivas, 
-                                    ajustes em tempo real e comunicação constante com o paciente.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                    <h3 class="font-poppins font-semibold text-xl text-primary mb-4">Missão</h3>
+                    <p class="font-inter text-text-secondary">
+                        Ser uma empresa com foco na qualidade de vida, tendo um time unido e integrado 
+                        para o crescimento de todos, principalmente do paciente.
+                    </p>
                 </div>
 
-                <div class="relative">
-                    <div class="methodology-diagram bg-secondary rounded-card p-8 shadow-card">
-                        <div class="text-center mb-8">
-                            <h4 class="font-poppins font-semibold text-2xl text-primary mb-2">Abordagem Holística</h4>
-                            <p class="font-inter text-text-secondary">Integração de múltiplas dimensões do cuidado</p>
-                        </div>
-                        
-                        <!-- Central Circle -->
-                        <div class="relative w-48 h-48 mx-auto mb-8">
-                            <div class="absolute inset-0 bg-accent/10 rounded-full flex items-center justify-center">
-                                <div class="text-center">
-                                    <svg class="w-12 h-12 text-accent mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                                    </svg>
-                                    <p class="font-poppins font-semibold text-primary">Paciente</p>
-                                </div>
-                            </div>
-                            
-                            <!-- Surrounding Elements -->
-                            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-secondary rounded-lg px-3 py-2 shadow-card">
-                                <p class="text-sm font-inter text-text-primary">Tecnologia</p>
-                            </div>
-                            <div class="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-secondary rounded-lg px-3 py-2 shadow-card">
-                                <p class="text-sm font-inter text-text-primary">Expertise</p>
-                            </div>
-                            <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-secondary rounded-lg px-3 py-2 shadow-card">
-                                <p class="text-sm font-inter text-text-primary">Evidência</p>
-                            </div>
-                            <div class="absolute top-1/2 -left-4 transform -translate-y-1/2 bg-secondary rounded-lg px-3 py-2 shadow-card">
-                                <p class="text-sm font-inter text-text-primary">Cuidado</p>
-                            </div>
-                        </div>
+                <!-- Visão -->
+                <div class="card text-center transform-unfreezing">
+                    <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                        </svg>
                     </div>
+                    <h3 class="font-poppins font-semibold text-xl text-primary mb-4">Visão</h3>
+                    <p class="font-inter text-text-secondary">
+                        Ser uma empresa de fisioterapia que seja referência nos Campos Gerais, 
+                        com atuação nas mais diversas áreas e especialidades.
+                    </p>
+                </div>
+
+                <!-- Valores -->
+                <div class="card text-center transform-unfreezing">
+                    <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-poppins font-semibold text-xl text-primary mb-4">Valores</h3>
+                    <p class="font-inter text-text-secondary">
+                        <strong>Deus, família, dedicação e respeito!</strong> Estes são os pilares que norteiam 
+                        nossa atuação e garantem um atendimento humanizado e de qualidade.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Facilities Section -->
+    <!-- Áreas de Atuação -->
     <section class="py-20 bg-secondary">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="font-poppins font-bold text-4xl text-primary mb-4">
-                    Instalações <span class="text-accent">Premium</span>
+                    Nossas <span class="text-accent">Áreas</span>
                 </h2>
                 <p class="font-inter text-lg text-text-secondary max-w-2xl mx-auto">
-                    Ambiente tecnológico e acolhedor projetado para otimizar sua recuperação
+                    Atuamos em hospitais, atendimento domiciliar e ambulatorial, oferecendo cuidado completo
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Sala de Avaliação -->
-                <div class="facility-card card transform-unfreezing group cursor-pointer">
-                    <div class="relative overflow-hidden rounded-lg mb-6">
-                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Sala de Avaliação 3D" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-600" loading="lazy" onerror="this.src='https://images.pexels.com/photos/6111616/pexels-photo-6111616.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'; this.onerror=null;" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
-                        <div class="absolute top-4 right-4 bg-accent/90 text-secondary px-3 py-1 rounded-full text-sm font-inter">
-                            360° Tour
-                        </div>
-                    </div>
-                    <h3 class="font-poppins font-semibold text-xl text-primary mb-3">Sala de Avaliação 3D</h3>
-                    <p class="font-inter text-text-secondary mb-4">
-                        Equipada com sistema de análise biomecânica tridimensional para diagnóstico preciso.
-                    </p>
-                    <div class="flex items-center text-accent">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Hospitalar -->
+                <div class="card text-center transform-unfreezing group hover:shadow-lg transition-all duration-300">
+                    <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-accent/20 transition-colors duration-300">
+                        <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-4m-5 0H3m2 0h3M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
                         </svg>
-                        <span class="font-inter font-medium">Ver Tour Virtual</span>
+                    </div>
+                    <h3 class="font-poppins font-semibold text-xl text-primary mb-4">Fisioterapia Hospitalar</h3>
+                    <p class="font-inter text-text-secondary mb-4">
+                        Atendimento especializado em ambiente hospitalar, com foco em terapia intensiva, 
+                        urgência/emergência e cuidados paliativos.
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-2">
+                        <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">UTI</span>
+                        <span class="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium">Emergência</span>
+                        <span class="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium">Paliativos</span>
                     </div>
                 </div>
 
-                <!-- Ginásio Terapêutico -->
-                <div class="facility-card card transform-unfreezing group cursor-pointer">
-                    <div class="relative overflow-hidden rounded-lg mb-6">
-                        <img src="https://images.pexels.com/photos/6111367/pexels-photo-6111367.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Ginásio Terapêutico" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-600" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
-                        <div class="absolute top-4 right-4 bg-accent/90 text-secondary px-3 py-1 rounded-full text-sm font-inter">
-                            360° Tour
-                        </div>
-                    </div>
-                    <h3 class="font-poppins font-semibold text-xl text-primary mb-3">Ginásio Terapêutico</h3>
-                    <p class="font-inter text-text-secondary mb-4">
-                        Espaço amplo com equipamentos de última geração para reabilitação funcional.
-                    </p>
-                    <div class="flex items-center text-accent">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                <!-- Domiciliar -->
+                <div class="card text-center transform-unfreezing group hover:shadow-lg transition-all duration-300">
+                    <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-accent/20 transition-colors duration-300">
+                        <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
                         </svg>
-                        <span class="font-inter font-medium">Ver Tour Virtual</span>
+                    </div>
+                    <h3 class="font-poppins font-semibold text-xl text-primary mb-4">Atendimento Domiciliar</h3>
+                    <p class="font-inter text-text-secondary mb-4">
+                        Cuidado personalizado no conforto do seu lar, proporcionando maior comodidade 
+                        e continuidade do tratamento.
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-2">
+                        <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">Conforto</span>
+                        <span class="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium">Personalizado</span>
+                        <span class="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium">Continuidade</span>
                     </div>
                 </div>
 
-                <!-- Sala de Pilates -->
-                <div class="facility-card card transform-unfreezing group cursor-pointer">
-                    <div class="relative overflow-hidden rounded-lg mb-6">
-                        <img src="https://images.pixabay.com/photo/2017/08/07/14/02/people-2604149_1280.jpg" alt="Sala de Pilates Terapêutico" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-600" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
-                        <div class="absolute top-4 right-4 bg-accent/90 text-secondary px-3 py-1 rounded-full text-sm font-inter">
-                            360° Tour
-                        </div>
-                    </div>
-                    <h3 class="font-poppins font-semibold text-xl text-primary mb-3">Pilates Terapêutico</h3>
-                    <p class="font-inter text-text-secondary mb-4">
-                        Ambiente sereno com equipamentos especializados para fortalecimento e flexibilidade.
-                    </p>
-                    <div class="flex items-center text-accent">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                <!-- Ambulatorial -->
+                <div class="card text-center transform-unfreezing group hover:shadow-lg transition-all duration-300">
+                    <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-accent/20 transition-colors duration-300">
+                        <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
                         </svg>
-                        <span class="font-inter font-medium">Ver Tour Virtual</span>
+                    </div>
+                    <h3 class="font-poppins font-semibold text-xl text-primary mb-4">Atendimento Ambulatorial</h3>
+                    <p class="font-inter text-text-secondary mb-4">
+                        Consultas especializadas em ambiente clínico, com equipamentos modernos 
+                        e profissionais qualificados para seu tratamento.
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-2">
+                        <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">Especializado</span>
+                        <span class="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium">Moderno</span>
+                        <span class="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium">Qualificado</span>
                     </div>
                 </div>
             </div>
@@ -727,7 +781,7 @@
                 Agende uma visita e descubra como nossa metodologia inovadora pode transformar sua recuperação.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="patient_portal.html" class="btn-primary bg-accent hover:bg-accent/90">
+                <a href="contact.html" class="btn-primary bg-accent hover:bg-accent/90">
                     Agendar Avaliação Gratuita
                 </a>
                 <a href="contact.html" class="btn-secondary bg-transparent border-secondary text-secondary hover:bg-secondary hover:text-primary">
@@ -795,7 +849,7 @@
                         <li><a href="team.html" class="font-inter text-text-secondary hover:text-accent transition-colors">Equipe</a></li>
                         <li><a href="about.html" class="font-inter text-text-secondary hover:text-accent transition-colors">Metodologia</a></li>
                         <li><a href="contact.html" class="font-inter text-text-secondary hover:text-accent transition-colors">Localização</a></li>
-                        <li><a href="patient_portal.html" class="font-inter text-text-secondary hover:text-accent transition-colors">Portal do Paciente</a></li>
+                        <li><a href="contact.html" class="font-inter text-text-secondary hover:text-accent transition-colors">Contato</a></li>
                     </ul>
                 </div>
 
