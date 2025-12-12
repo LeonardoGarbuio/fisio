@@ -7,20 +7,20 @@ module.exports = {
         primary: "#000000", // black - Medical authority and sophisticated restraint
         secondary: "#FFFFFF", // white - Clinical cleanliness and content clarity
         accent: "#E31E24", // red-600 - Vital energy and critical action focus
-        
+
         // Background Colors
         background: "#FAFAFA", // gray-50 - Subtle warmth without clinical sterility
         surface: "#F5F5F5", // gray-100 - Card depth and content separation
-        
+
         // Text Colors
         'text-primary': "#1A1A1A", // gray-900 - Extended reading comfort and hierarchy
         'text-secondary': "#666666", // gray-500 - Supporting information and metadata
-        
+
         // Status Colors
         success: "#22C55E", // green-500 - Positive progress and completed actions
         warning: "#F59E0B", // amber-500 - Attention without alarm or panic
         error: "#EF4444", // red-500 - Clear concern with helpful guidance
-        
+
         // Border Colors
         border: "#E5E5E5", // gray-300 - Minimal borders for form inputs and content separation
       },
@@ -48,11 +48,11 @@ module.exports = {
       },
       keyframes: {
         unfreezing: {
-          '0%': { 
+          '0%': {
             transform: 'perspective(1000px) rotateX(0deg) translateY(0px)',
             opacity: '0.8'
           },
-          '100%': { 
+          '100%': {
             transform: 'perspective(1000px) rotateX(5deg) translateY(-5px)',
             opacity: '1'
           }
@@ -62,11 +62,11 @@ module.exports = {
           '100%': { opacity: '1' }
         },
         slideUp: {
-          '0%': { 
+          '0%': {
             transform: 'translateY(20px)',
             opacity: '0'
           },
-          '100%': { 
+          '100%': {
             transform: 'translateY(0px)',
             opacity: '1'
           }
