@@ -9,7 +9,7 @@
         content="Descubra nossos serviços especializados em fisioterapia: reabilitação cardiopulmonar, hipnose clínica, fisioterapia domiciliar, hospitalar, neurologia, pediatria, ortopedia e mais." />
     <link rel="stylesheet" href="../css/main.css" />
     <style>
-        /* Nav Floating */
+        /* Nav Floating & Dropshadows */
         .nav-floating {
             position: fixed;
             top: 1.5rem;
@@ -24,6 +24,16 @@
             display: flex;
             align-items: center;
             gap: 2rem;
+        }
+
+        /* Mobile Nav Adjustments */
+        @media (max-width: 1024px) {
+            .nav-floating {
+                width: 90%;
+                max-width: 384px;
+                justify-content: space-between;
+                padding: 0.75rem 1.5rem;
+            }
         }
 
         .nav-floating a {
@@ -101,48 +111,78 @@
             color: white;
         }
 
-        /* Service Card Styles */
-        .service-card {
+        /* Standardized Card Styles */
+        .standard-card {
             background: white;
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
+            border-radius: 20px;
+            padding: 2.5rem;
             border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
-        .service-card:hover {
+        .standard-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+            border-color: #E31E24;
         }
 
-        .service-icon {
+        .card-icon {
             width: 64px;
             height: 64px;
             border-radius: 16px;
-            background: linear-gradient(135deg, #E31E24, #ff4757);
+            background: rgba(227, 30, 36, 0.05);
+            color: #E31E24;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
         }
 
-        .service-icon svg {
-            width: 32px;
-            height: 32px;
+        .standard-card:hover .card-icon {
+            background: #E31E24;
             color: white;
         }
 
+        .card-icon svg {
+            width: 32px;
+            height: 32px;
+        }
+
         .benefit-tag {
-            display: inline-block;
-            background: rgba(227, 30, 36, 0.1);
-            color: #E31E24;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            background: #f8fafc;
+            color: #64748b;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
             font-weight: 500;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .tags-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: auto;
+            /* Pushes tags to bottom if needed, or keeps them after text */
+            margin-bottom: 1.5rem;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            font-weight: 600;
+            color: #E31E24;
+            margin-top: auto;
+        }
+
+        .card-link:hover {
+            gap: 0.5rem;
         }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -151,7 +191,7 @@
         src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fftphysio6226back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
 </head>
 
-<body class="bg-background text-text-primary">
+<body class="bg-surface text-text-primary">
     <!-- Floating Navigation -->
     <nav class="nav-floating">
         <a href="homepage.html">
@@ -159,7 +199,7 @@
         </a>
         <div class="hidden lg:flex items-center gap-6">
             <div class="relative services-group">
-                <a href="services.html" class="flex items-center gap-1">
+                <a href="services.html" class="flex items-center gap-1 text-[#E31E24]">
                     Serviços
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -206,338 +246,406 @@
             <a href="contact.html">Contato</a>
         </div>
         <a href="contact.html" class="nav-cta hidden lg:block">Agendar</a>
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" onclick="toggleMenu()"
+            class="lg:hidden text-2xl text-primary focus:outline-none p-2 relative z-50" aria-label="Abrir menu">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="relative pt-48 pb-16 bg-gradient-to-br from-background to-surface overflow-hidden">
-        <div class="h-20"></div>
-        <div class="absolute inset-0 opacity-20">
-            <div class="absolute top-20 left-10 w-32 h-32 bg-accent/10 rounded-full animate-pulse"></div>
-            <div class="absolute top-40 right-20 w-24 h-24 bg-primary/5 rounded-full animate-pulse"
-                style="animation-delay: 1s;"></div>
-            <div class="absolute bottom-20 left-1/3 w-40 h-40 bg-accent/5 rounded-full animate-pulse"
-                style="animation-delay: 2s;"></div>
+    <!-- Expanded Mobile Menu (Overlay Morph) -->
+    <div id="mobile-expanded-menu"
+        class="lg:hidden fixed bg-white overflow-hidden transition-all duration-300 ease-out origin-top invisible opacity-0"
+        style="border-radius: 100px; height: 72px; box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08); z-index: 99999; will-change: height, border-radius, top, left, width;">
+
+        <!-- Header (Matches Nav visual exactly) -->
+        <div class="flex justify-between items-center px-6 h-[72px] w-full absolute top-0 left-0 bg-white/95 backdrop-blur-xl z-20 rounded-[100px] transition-all duration-300"
+            id="mobile-menu-header" style="box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);">
+            <a href="homepage.html"><img src="../images/0.png" alt="INTENSIFISIO" class="h-12 w-auto"></a>
+            <button onclick="toggleMenu()"
+                class="text-primary hover:bg-gray-100 rounded-full p-2 transition-colors focus:outline-none"
+                aria-label="Fechar menu">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="px-4 pb-6 flex flex-col gap-1 max-h-[90vh] overflow-y-auto opacity-0 transition-opacity duration-200 delay-100"
+            id="mobile-menu-content">
+            <!-- Spacer to push content below the absolute header -->
+            <div style="height: 88px; width: 100%; flex-shrink: 0;"></div>
+
+            <!-- Serviços -->
+            <a href="services.html"
+                class="flex items-center gap-4 px-4 py-4 rounded-2xl hover:bg-accent/5 text-gray-800 hover:text-accent transition-all group">
+                <div
+                    class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-all">
+                    <svg class="w-6 h-6 text-accent group-hover:text-white" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                    </svg>
+                </div>
+                <span class="font-semibold text-lg">Serviços</span>
+            </a>
+
+            <!-- Sobre -->
+            <a href="about.html"
+                class="flex items-center gap-4 px-4 py-4 rounded-2xl hover:bg-accent/5 text-gray-800 hover:text-accent transition-all group">
+                <div
+                    class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-all">
+                    <svg class="w-6 h-6 text-blue-500 group-hover:text-white" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <span class="font-semibold text-lg">Sobre</span>
+            </a>
+
+            <!-- Equipe -->
+            <a href="team.html"
+                class="flex items-center gap-4 px-4 py-4 rounded-2xl hover:bg-accent/5 text-gray-800 hover:text-accent transition-all group">
+                <div
+                    class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-all">
+                    <svg class="w-6 h-6 text-purple-500 group-hover:text-white" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                </div>
+                <span class="font-semibold text-lg">Equipe</span>
+            </a>
+
+            <!-- Contato -->
+            <a href="contact.html"
+                class="flex items-center gap-4 px-4 py-4 rounded-2xl hover:bg-accent/5 text-gray-800 hover:text-accent transition-all group">
+                <div
+                    class="w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-all">
+                    <svg class="w-6 h-6 text-green-500 group-hover:text-white" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                </div>
+                <span class="font-semibold text-lg">Contato</span>
+            </a>
+
+            <!-- Divider -->
+            <div class="h-px bg-gray-100 my-2 mx-4"></div>
+
+            <!-- Agendar Button -->
+            <div class="pt-2 px-2">
+                <a href="contact.html"
+                    class="w-full flex items-center justify-center gap-2 bg-accent text-white font-semibold py-3.5 px-6 rounded-full whitespace-nowrap shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:scale-[1.02] active:scale-[0.98] transition-all">
+                    Agendar Consulta
+                    <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Light Premium Hero Section -->
+    <section class="relative pt-48 pb-40 bg-gradient-to-br from-gray-50 to-white overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[100px]"></div>
+            <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[100px]"></div>
         </div>
 
         <div class="container mx-auto px-6 text-center relative z-10">
             <div class="max-w-4xl mx-auto">
-                <h1 class="font-poppins font-bold text-5xl lg:text-6xl text-primary mb-6 text-shadow">
-                    Serviços <span class="text-accent">Especializados</span>
+                <span
+                    class="inline-block py-1 px-3 rounded-full bg-white shadow-sm border border-gray-100 text-accent text-sm font-medium mb-6">
+                    Excelência em Fisioterapia
+                </span>
+                <h1 class="font-poppins font-bold text-5xl lg:text-7xl text-primary mb-8 leading-tight">
+                    Soluções reais para sua <span class="text-accent">saúde plena</span>
                 </h1>
-                <p class="font-inter text-xl lg:text-2xl text-text-secondary mb-4 max-w-3xl mx-auto">
-                    Onde nosso trabalho se resume na paixão em criar movimento com a mente, com o corpo...
+                <p class="font-inter text-xl text-text-secondary mb-20 max-w-2xl mx-auto font-light leading-relaxed">
+                    Mais que tratamentos, oferecemos caminhos personalizados para sua recuperação, combinando ciência
+                    avançada com calor humano.
                 </p>
-                <p class="font-inter text-xl lg:text-2xl text-accent font-medium max-w-3xl mx-auto">
-                    Mas fundamentalmente com o coração.
-                </p>
+
+                <!-- Quick Stats Row -->
+                <div class="flex flex-wrap justify-center gap-8 border-t border-gray-200 pt-16 mb-12">
+                    <div>
+                        <p class="text-3xl font-bold text-primary">8+</p>
+                        <p class="text-gray-500 text-sm">Especialidades</p>
+                    </div>
+                    <div class="w-px h-12 bg-gray-200"></div>
+                    <div>
+                        <p class="text-3xl font-bold text-primary">100%</p>
+                        <p class="text-gray-500 text-sm">Personalizado</p>
+                    </div>
+                    <div class="w-px h-12 bg-gray-200"></div>
+                    <div>
+                        <p class="text-3xl font-bold text-primary">24h</p>
+                        <p class="text-gray-500 text-sm">Suporte</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Grid Section -->
-    <section class="py-20 bg-secondary">
+    <!-- Method Section -->
+    <section class="py-20 bg-white border-b border-gray-100">
         <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-poppins font-bold text-3xl text-primary mb-4">O Processo <span
+                        class="text-accent">INTENSIFISIO</span></h2>
+                <p class="text-text-secondary">Três passos claros entre você e sua recuperação</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Step 1 -->
+                <div class="text-center group">
+                    <div
+                        class="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-accent group-hover:text-white transition-colors duration-300">
+                        <span class="font-bold text-2xl text-gray-400 group-hover:text-white">1</span>
+                    </div>
+                    <h3 class="font-bold text-primary text-xl mb-3">Avaliação Profunda</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Não olhamos apenas o sintoma, mas a raiz do
+                        problema através de diagnóstico funcional detalhado.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="text-center group">
+                    <div
+                        class="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-accent group-hover:text-white transition-colors duration-300">
+                        <span class="font-bold text-2xl text-gray-400 group-hover:text-white">2</span>
+                    </div>
+                    <h3 class="font-bold text-primary text-xl mb-3">Plano Único</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Seu corpo é único. Seu tratamento também deve ser,
+                        com metas claras e técnicas específicas.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="text-center group">
+                    <div
+                        class="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-accent group-hover:text-white transition-colors duration-300">
+                        <span class="font-bold text-2xl text-gray-400 group-hover:text-white">3</span>
+                    </div>
+                    <h3 class="font-bold text-primary text-xl mb-3">Reabilitação Humana</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Acompanhamento próximo e acolhedor até sua total
+                        autonomia e retorno à vida plena.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid - STANDARDIZED -->
+    <section class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="mb-12 text-center">
+                <h2 class="font-poppins font-bold text-4xl text-primary mb-4">Nossas <span
+                        class="text-accent">Especialidades</span></h2>
+                <p class="text-text-secondary text-lg">Soluções completas para cada fase da sua vida</p>
+            </div>
+
+            <!-- Standard Grid: 3 Columns, Equal Sized Cards -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-                <!-- Reabilitação Cardiopulmonar -->
-                <div class="service-card" id="cardiopulmonar">
-                    <div class="service-icon">
+                <!-- 1. Cardiopulmonar -->
+                <div class="standard-card" id="cardiopulmonar">
+                    <div class="card-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path
                                 d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                         </svg>
                     </div>
                     <h3 class="font-poppins font-bold text-xl text-primary mb-4">Reabilitação Cardiopulmonar</h3>
-                    <p class="font-inter text-text-secondary mb-6 leading-relaxed">
-                        Programa especializado voltado à recuperação da função cardíaca e respiratória, promovendo
-                        mais
-                        qualidade de vida, autonomia e segurança. Por meio de exercícios monitorados, técnicas de
-                        fortalecimento, educação em saúde e acompanhamento contínuo, o paciente evolui de forma
-                        progressiva e personalizada.
+                    <p class="font-inter text-text-secondary mb-6 leading-relaxed flex-1">
+                        Programa padrão-ouro para recuperação da função cardíaca e respiratória. Ideal para pacientes
+                        pós-COVID, cardiopatas ou com doenças respiratórias.
                     </p>
-                    <div class="mb-6">
+                    <div class="tags-wrapper">
                         <span class="benefit-tag">DPOC</span>
                         <span class="benefit-tag">Cardiopatas</span>
                         <span class="benefit-tag">Pós COVID</span>
-                        <span class="benefit-tag">Tabagistas</span>
-                        <span class="benefit-tag">Asmáticos</span>
                     </div>
-                    <a href="contact.html" class="btn-primary w-full text-center block">
-                        Agendar Avaliação
-                    </a>
                 </div>
 
-                <!-- Hipnose Clínica -->
-                <div class="service-card" id="hipnose">
-                    <div class="service-icon">
+                <!-- 2. Neurologia -->
+                <div class="standard-card" id="neurologia">
+                    <div class="card-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="3" />
-                            <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1" />
+                            <circle cx="12" cy="12" r="10" />
+                            <path
+                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
                         </svg>
                     </div>
-                    <h3 class="font-poppins font-bold text-xl text-primary mb-4">Hipnose Clínica</h3>
-                    <p class="font-inter text-text-secondary mb-6 leading-relaxed">
-                        Abordagem terapêutica baseada em evidências que utiliza o estado de foco profundo para
-                        acessar
-                        emoções e padrões de comportamento. De forma segura e conduzida por profissional habilitado,
-                        a
-                        hipnose favorece o autoconhecimento, o controle mental de diversos sintomas, além de
-                        promover
-                        relaxamento físico e mental.
+                    <h3 class="font-poppins font-bold text-xl text-primary mb-4">Neurologia</h3>
+                    <p class="font-inter text-text-secondary mb-6 leading-relaxed flex-1">
+                        Especializada em restaurar a função motora e a autonomia em casos de AVC, Parkinson e outras
+                        condições neurológicas.
                     </p>
-                    <div class="mb-6">
-                        <span class="benefit-tag">Ansiedade</span>
-                        <span class="benefit-tag">Dor</span>
-                        <span class="benefit-tag">Medo</span>
-                        <span class="benefit-tag">Hábitos</span>
-                        <span class="benefit-tag">Psicossomáticos</span>
+                    <div class="tags-wrapper">
+                        <span class="benefit-tag">AVC</span>
+                        <span class="benefit-tag">Parkinson</span>
+                        <span class="benefit-tag">Neuroplasticidade</span>
                     </div>
-                    <a href="contact.html" class="btn-primary w-full text-center block">
-                        Agendar Sessão
-                    </a>
                 </div>
 
-                <!-- Fisioterapia Domiciliar -->
-                <div class="service-card" id="domiciliar">
-                    <div class="service-icon">
+                <!-- 3. Domiciliar -->
+                <div class="standard-card" id="domiciliar">
+                    <div class="card-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
                             <polyline points="9,22 9,12 15,12 15,22" />
                         </svg>
                     </div>
                     <h3 class="font-poppins font-bold text-xl text-primary mb-4">Fisioterapia Domiciliar</h3>
-                    <p class="font-inter text-text-secondary mb-6 leading-relaxed">
-                        Leva o cuidado especializado até a casa do paciente, oferecendo praticidade, conforto e
-                        atendimento humanizado. O tratamento é individualizado e adaptado ao ambiente doméstico,
-                        favorecendo melhores resultados para pessoas com mobilidade reduzida, idosos, pacientes
-                        pós-operatórios ou em reabilitação prolongada.
+                    <p class="font-inter text-text-secondary mb-6 leading-relaxed flex-1">
+                        Levamos a clínica até a casa do paciente. Ideal para idosos, pós-operatórios e pessoas com
+                        mobilidade reduzida.
                     </p>
-                    <div class="mb-6">
+                    <div class="tags-wrapper">
                         <span class="benefit-tag">Conforto</span>
-                        <span class="benefit-tag">Personalizado</span>
-                        <span class="benefit-tag">Pós-Operatório</span>
-                        <span class="benefit-tag">Idosos</span>
+                        <span class="benefit-tag">Praticidade</span>
                     </div>
-                    <a href="contact.html" class="btn-primary w-full text-center block">
-                        Solicitar Atendimento
-                    </a>
                 </div>
 
-                <!-- Fisioterapia Hospitalar -->
-                <div class="service-card" id="hospitalar">
-                    <div class="service-icon">
+                <!-- 4. Hospitalar -->
+                <div class="standard-card" id="hospitalar">
+                    <div class="card-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4" />
-                            <path d="M9 9h.01M9 13h.01M9 17h.01" />
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
                         </svg>
                     </div>
                     <h3 class="font-poppins font-bold text-xl text-primary mb-4">Fisioterapia Hospitalar</h3>
-                    <p class="font-inter text-text-secondary mb-6 leading-relaxed">
-                        Atua na prevenção e no tratamento de complicações respiratórias, musculoesqueléticas e
-                        funcionais durante a internação. Com protocolos baseados em evidências, promove melhora da
-                        ventilação, redução do tempo de internação, prevenção de fraqueza adquirida no hospital e
-                        aceleração da reabilitação global.
+                    <p class="font-inter text-text-secondary mb-6 leading-relaxed flex-1">
+                        Atendimento especializado intra-hospitalar e UTI para recuperação acelerada e prevenção de
+                        complicações.
                     </p>
-                    <div class="mb-6">
+                    <div class="tags-wrapper">
                         <span class="benefit-tag">UTI</span>
-                        <span class="benefit-tag">Respiratório</span>
-                        <span class="benefit-tag">Multiprofissional</span>
-                        <span class="benefit-tag">Segurança</span>
+                        <span class="benefit-tag">Alta Complexidade</span>
                     </div>
-                    <a href="contact.html" class="btn-primary w-full text-center block">
-                        Agendar Consulta
-                    </a>
                 </div>
 
-                <!-- Cuidados Paliativos -->
-                <div class="service-card" id="paliativos">
-                    <div class="service-icon">
+                <!-- 5. Hipnose -->
+                <div class="standard-card" id="hipnose">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3" />
+                            <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1" />
+                        </svg>
+                    </div>
+                    <h3 class="font-poppins font-bold text-xl text-primary mb-4">Hipnose Clínica</h3>
+                    <p class="font-inter text-text-secondary mb-6 leading-relaxed flex-1">
+                        Tratamento focado na mente para aliviar dores crônicas, ansiedade, fobias e transformar hábitos
+                        prejudiciais.
+                    </p>
+                    <div class="tags-wrapper">
+                        <span class="benefit-tag">Dor Crônica</span>
+                        <span class="benefit-tag">Saúde Mental</span>
+                    </div>
+                </div>
+
+                <!-- 6. Pediatria -->
+                <div class="standard-card" id="pediatria">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="8" r="5" />
+                            <path d="M12 13v8M9 18h6" />
+                        </svg>
+                    </div>
+                    <h3 class="font-poppins font-bold text-xl text-primary mb-4">Pediatria</h3>
+                    <p class="font-inter text-text-secondary mb-6 leading-relaxed flex-1">
+                        Cuidado lúdico e especializado para o desenvolvimento motor de bebês e crianças.
+                    </p>
+                    <div class="tags-wrapper">
+                        <span class="benefit-tag">Estimulação</span>
+                        <span class="benefit-tag">Lúdico</span>
+                    </div>
+                </div>
+
+                <!-- 7. Ortopedia -->
+                <div class="standard-card" id="ortopedia">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="m9 12 2 2 4-4" />
+                        </svg>
+                    </div>
+                    <h3 class="font-poppins font-bold text-xl text-primary mb-4">Ortopedia</h3>
+                    <p class="font-inter text-text-secondary mb-6 leading-relaxed flex-1">
+                        Reabilitação completa para lesões musculares, entorses, fraturas, pós-cirúrgico e retorno ao
+                        esporte.
+                    </p>
+                    <div class="tags-wrapper">
+                        <span class="benefit-tag">Lesões</span>
+                        <span class="benefit-tag">Esporte</span>
+                    </div>
+                </div>
+
+                <!-- 8. Paliativos -->
+                <div class="standard-card" id="paliativos">
+                    <div class="card-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path
                                 d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                         </svg>
                     </div>
                     <h3 class="font-poppins font-bold text-xl text-primary mb-4">Cuidados Paliativos</h3>
-                    <p class="font-inter text-text-secondary mb-6 leading-relaxed">
-                        Oferecem suporte integral a pacientes com doenças graves, crônicas, incuráveis ou em estágio
-                        avançado, focando no alívio da dor, no conforto físico e no bem-estar emocional. A
-                        fisioterapia
-                        nestes casos é um serviço essencial, buscando alívio de sintomas e qualidade de vida de
-                        todos
-                        envolvidos no cuidado.
+                    <p class="font-inter text-text-secondary mb-6 leading-relaxed flex-1">
+                        Foco no conforto, dignidade e alívio da dor para pacientes em condições crônicas ou avançadas.
                     </p>
-                    <div class="mb-6">
-                        <span class="benefit-tag">Alívio da Dor</span>
+                    <div class="tags-wrapper">
                         <span class="benefit-tag">Conforto</span>
-                        <span class="benefit-tag">Bem-Estar</span>
-                        <span class="benefit-tag">Humanizado</span>
+                        <span class="benefit-tag">Dignidade</span>
                     </div>
-                    <a href="contact.html" class="btn-primary w-full text-center block">
-                        Falar com Especialista
-                    </a>
                 </div>
 
-                <!-- Cuidados ao Idoso -->
-                <div class="service-card" id="idoso">
-                    <div class="service-icon">
+                <!-- 9. Idoso -->
+                <div class="standard-card" id="idoso">
+                    <div class="card-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                             <circle cx="12" cy="7" r="4" />
                         </svg>
                     </div>
                     <h3 class="font-poppins font-bold text-xl text-primary mb-4">Cuidados ao Idoso</h3>
-                    <p class="font-inter text-text-secondary mb-6 leading-relaxed">
-                        Voltado à promoção da saúde, prevenção de quedas, manutenção da autonomia e apoio nas
-                        atividades
-                        de vida diária. Com avaliação detalhada e plano terapêutico personalizado, inclui exercícios
-                        funcionais, estimulação cognitiva, orientação familiar e monitoramento contínuo.
+                    <p class="font-inter text-text-secondary mb-6 leading-relaxed flex-1">
+                        Estratégias para prevenção de quedas, melhoria do equilíbrio e manutenção da autonomia na
+                        terceira idade.
                     </p>
-                    <div class="mb-6">
-                        <span class="benefit-tag">Prevenção de Quedas</span>
+                    <div class="tags-wrapper">
                         <span class="benefit-tag">Autonomia</span>
-                        <span class="benefit-tag">Funcionalidade</span>
-                        <span class="benefit-tag">Segurança</span>
+                        <span class="benefit-tag">Equilíbrio</span>
                     </div>
-                    <a href="contact.html" class="btn-primary w-full text-center block">
-                        Agendar Avaliação
-                    </a>
-                </div>
-
-                <!-- Fisioterapia em Neurologia -->
-                <div class="service-card" id="neurologia">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path
-                                d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1 .34-4.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z" />
-                            <path
-                                d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0-.34-4.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z" />
-                        </svg>
-                    </div>
-                    <h3 class="font-poppins font-bold text-xl text-primary mb-4">Fisioterapia em Neurologia</h3>
-                    <p class="font-inter text-text-secondary mb-6 leading-relaxed">
-                        Especializada no cuidado e na reabilitação de pessoas com alterações neurológicas. O foco é
-                        restaurar ou potencializar a função motora, melhorar o equilíbrio, a marcha, a coordenação e
-                        a
-                        autonomia nas atividades do dia a dia. Utilizando técnicas baseadas na neuroplasticidade e
-                        exercícios específicos.
-                    </p>
-                    <div class="mb-6">
-                        <span class="benefit-tag">AVC</span>
-                        <span class="benefit-tag">Parkinson</span>
-                        <span class="benefit-tag">Lesão Medular</span>
-                        <span class="benefit-tag">Esclerose Múltipla</span>
-                    </div>
-                    <a href="contact.html" class="btn-primary w-full text-center block">
-                        Consulta Especializada
-                    </a>
-                </div>
-
-                <!-- Fisioterapia em Pediatria -->
-                <div class="service-card" id="pediatria">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="8" r="5" />
-                            <path d="M12 13v8M9 18h6" />
-                        </svg>
-                    </div>
-                    <h3 class="font-poppins font-bold text-xl text-primary mb-4">Fisioterapia em Pediatria</h3>
-                    <p class="font-inter text-text-secondary mb-6 leading-relaxed">
-                        Acompanha bebês, crianças e adolescentes, prevenindo e tratando alterações
-                        musculoesqueléticas,
-                        respiratórias e neurológicas. O atendimento é lúdico, acolhedor e adaptado à faixa etária,
-                        tornando a terapia mais agradável e eficaz. Promove ganho de força, coordenação, equilíbrio
-                        e
-                        mobilidade.
-                    </p>
-                    <div class="mb-6">
-                        <span class="benefit-tag">Bebês</span>
-                        <span class="benefit-tag">Crianças</span>
-                        <span class="benefit-tag">Lúdico</span>
-                        <span class="benefit-tag">Desenvolvimento</span>
-                    </div>
-                    <a href="contact.html" class="btn-primary w-full text-center block">
-                        Agendar Avaliação
-                    </a>
-                </div>
-
-                <!-- Fisioterapia em Ortopedia -->
-                <div class="service-card" id="ortopedia">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path
-                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                        </svg>
-                    </div>
-                    <h3 class="font-poppins font-bold text-xl text-primary mb-4">Fisioterapia em Ortopedia</h3>
-                    <p class="font-inter text-text-secondary mb-6 leading-relaxed">
-                        Voltada ao tratamento e à prevenção de lesões musculares, articulares, ósseas e
-                        ligamentares,
-                        além de pós-operatórios e dores agudas ou crônicas. Por meio de exercícios terapêuticos,
-                        técnicas manuais e estratégias modernas de mobilização e fortalecimento, visa reduzir dor e
-                        recuperar mobilidade.
-                    </p>
-                    <div class="mb-6">
-                        <span class="benefit-tag">Lesões</span>
-                        <span class="benefit-tag">Pós-Cirúrgico</span>
-                        <span class="benefit-tag">Dor Crônica</span>
-                        <span class="benefit-tag">Mobilidade</span>
-                    </div>
-                    <a href="contact.html" class="btn-primary w-full text-center block">
-                        Agendar Avaliação
-                    </a>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="py-20 bg-primary text-secondary">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="font-poppins font-bold text-4xl mb-4">
-                Pronto para Iniciar sua <span class="text-accent">Recuperação</span>?
-            </h2>
-            <p class="font-inter text-xl mb-8 max-w-2xl mx-auto opacity-90">
-                Escolha o serviço ideal para suas necessidades e agende uma avaliação com nossos especialistas.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="contact.html" class="btn-primary bg-accent hover:bg-accent/90">
-                    Agendar Avaliação Gratuita
-                </a>
-                <a href="contact.html"
-                    class="btn-secondary bg-transparent border-secondary text-secondary hover:bg-secondary hover:text-primary">
-                    Falar com Especialista
-                </a>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Footer -->
-    <footer class="bg-surface py-16">
+    <footer class="bg-primary text-white py-16">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-4 gap-8">
                 <!-- Company Info -->
                 <div>
                     <div class="flex items-center space-x-3 mb-6">
-                        <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                            <svg class="w-6 h-6 text-secondary" viewBox="0 0 32 32" fill="currentColor">
-                                <path d="M4 16h4l2-8 4 16 2-8 4 8h4" stroke="currentColor" stroke-width="2" fill="none"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="font-poppins font-bold text-lg text-primary">INTENSIFISIO</h3>
-                        </div>
+                        <img src="../images/0.png" alt="INTENSIFISIO" class="h-10 w-auto brightness-0 invert">
                     </div>
-                    <p class="font-inter text-text-secondary mb-4">
-                        Intensidade é nossa essência. Transformando vidas através da fisioterapia especializada.
+                    <p class="font-inter text-white/70 mb-4">
+                        Transformando vidas através do movimento com expertise médica e inovação tecnológica.
                     </p>
                     <div class="flex space-x-4">
                         <a href="https://instagram.com/intensifisio.pg" target="_blank"
-                            class="text-text-secondary hover:text-accent transition-colors">
+                            class="text-white/70 hover:text-white transition-colors">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                 <path
-                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                             </svg>
                         </a>
                     </div>
@@ -545,65 +653,63 @@
 
                 <!-- Services -->
                 <div>
-                    <h4 class="font-poppins font-semibold text-lg text-primary mb-6">Serviços</h4>
+                    <h4 class="font-poppins font-semibold text-lg text-white mb-6">Serviços</h4>
                     <ul class="space-y-3">
-                        <li><a href="#cardiopulmonar"
-                                class="font-inter text-text-secondary hover:text-accent transition-colors">Reabilitação
-                                Cardiopulmonar</a></li>
-                        <li><a href="#hipnose"
-                                class="font-inter text-text-secondary hover:text-accent transition-colors">Hipnose
-                                Clínica</a></li>
-                        <li><a href="#domiciliar"
-                                class="font-inter text-text-secondary hover:text-accent transition-colors">Fisioterapia
-                                Domiciliar</a></li>
-                        <li><a href="#hospitalar"
-                                class="font-inter text-text-secondary hover:text-accent transition-colors">Fisioterapia
-                                Hospitalar</a></li>
-                        <li><a href="#neurologia"
-                                class="font-inter text-text-secondary hover:text-accent transition-colors">Fisioterapia
+                        <li><a href="services.html"
+                                class="font-inter text-white/70 hover:text-white transition-colors">Fisioterapia
+                                Ortopédica</a></li>
+                        <li><a href="services.html"
+                                class="font-inter text-white/70 hover:text-white transition-colors">Reabilitação
+                                Esportiva</a></li>
+                        <li><a href="services.html"
+                                class="font-inter text-white/70 hover:text-white transition-colors">Fisioterapia
                                 Neurológica</a></li>
+                        <li><a href="services.html"
+                                class="font-inter text-white/70 hover:text-white transition-colors">Pilates
+                                Terapêutico</a></li>
+                        <li><a href="services.html"
+                                class="font-inter text-white/70 hover:text-white transition-colors">Dry Needling</a>
+                        </li>
                     </ul>
                 </div>
 
                 <!-- Company -->
                 <div>
-                    <h4 class="font-poppins font-semibold text-lg text-primary mb-6">Empresa</h4>
+                    <h4 class="font-poppins font-semibold text-lg text-white mb-6">Empresa</h4>
                     <ul class="space-y-3">
                         <li><a href="about.html"
-                                class="font-inter text-text-secondary hover:text-accent transition-colors">Nossa
-                                História</a></li>
+                                class="font-inter text-white/70 hover:text-white transition-colors">Nossa História</a>
+                        </li>
                         <li><a href="team.html"
-                                class="font-inter text-text-secondary hover:text-accent transition-colors">Equipe</a>
-                        </li>
+                                class="font-inter text-white/70 hover:text-white transition-colors">Equipe</a></li>
                         <li><a href="about.html"
-                                class="font-inter text-text-secondary hover:text-accent transition-colors">Metodologia</a>
-                        </li>
+                                class="font-inter text-white/70 hover:text-white transition-colors">Metodologia</a></li>
                         <li><a href="contact.html"
-                                class="font-inter text-text-secondary hover:text-accent transition-colors">Localização</a>
-                        </li>
+                                class="font-inter text-white/70 hover:text-white transition-colors">Localização</a></li>
                         <li><a href="contact.html"
-                                class="font-inter text-text-secondary hover:text-accent transition-colors">Contato</a>
-                        </li>
+                                class="font-inter text-white/70 hover:text-white transition-colors">Contato</a></li>
                     </ul>
                 </div>
 
                 <!-- Contact -->
                 <div>
-                    <h4 class="font-poppins font-semibold text-lg text-primary mb-6">Contato</h4>
+                    <h4 class="font-poppins font-semibold text-lg text-white mb-6">Contato</h4>
                     <div class="space-y-3">
                         <div class="flex items-center">
                             <svg class="w-5 h-5 text-accent mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                             </svg>
-                            <span class="font-inter text-text-secondary">(42) 3239-3962 | (42) 99874-1807</span>
+                            <span class="font-inter text-white/70 hover:text-white transition-colors">(42)
+                                3239-3962</span>
                         </div>
                         <div class="flex items-center">
                             <svg class="w-5 h-5 text-accent mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                             </svg>
-                            <span class="font-inter text-text-secondary">intensifisio.pg@gmail.com</span>
+                            <span
+                                class="font-inter text-white/70 hover:text-white transition-colors">intensifisio.pg@gmail.com</span>
                         </div>
                         <div class="flex items-start">
                             <svg class="w-5 h-5 text-accent mr-3 mt-1" fill="none" stroke="currentColor"
@@ -613,15 +719,15 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
-                            <span class="font-inter text-text-secondary">Rua Nestor Guimarães, 111, Sala
-                                93<br />Edifício Corporate - Ponta Grossa, PR</span>
+                            <span class="font-inter text-white/70">Rua Nestor Guimarães, 111, Sala 93<br />Edifício
+                                Corporate - Ponta Grossa, PR</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="border-t border-border mt-12 pt-8 text-center">
-                <p class="font-inter text-text-secondary">
+            <div class="border-t border-white/10 mt-12 pt-8 text-center">
+                <p class="font-inter text-white/50">
                     © 2025 INTENSIFISIO. Todos os direitos reservados.
                 </p>
             </div>
@@ -630,11 +736,80 @@
 
     <!-- JavaScript -->
     <script>
-        // Mobile Menu Toggle
-        document.getElementById('mobile-menu-btn').addEventListener('click', function () {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
+        // Mobile Menu Logic - Overlay Morph
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-expanded-menu');
+            const menuContent = document.getElementById('mobile-menu-content');
+            const menuHeader = document.getElementById('mobile-menu-header');
+            const navbar = document.querySelector('.nav-floating');
+
+            if (!menu) return;
+
+            const isHidden = menu.classList.contains('invisible');
+
+            if (isHidden) {
+                // OPEN
+                // IMPORTANTE: Copiar posição EXATA da nav antes de mostrar
+                if (navbar) {
+                    const rect = navbar.getBoundingClientRect();
+                    menu.style.top = rect.top + 'px';
+                    menu.style.left = rect.left + 'px';
+                    menu.style.width = rect.width + 'px';
+                }
+
+                // Hide the actual navbar so only the menu is visible
+                if (navbar) navbar.style.opacity = '0';
+
+                menu.classList.remove('invisible', 'opacity-0');
+
+                // Animate expansion
+                requestAnimationFrame(() => {
+                    menu.style.height = '420px'; // Expand height
+                    menu.style.borderRadius = '24px'; // Morph shape
+                    // Also round the header less when expanded
+                    if (menuHeader) menuHeader.style.borderRadius = '24px 24px 0 0';
+                });
+
+                document.body.style.overflow = 'hidden';
+
+                // Show Content
+                if (menuContent) {
+                    setTimeout(() => menuContent.classList.remove('opacity-0'), 150);
+                }
+
+            } else {
+                // CLOSE
+                // Hide content first
+                if (menuContent) menuContent.classList.add('opacity-0');
+
+                // Animate collapse
+                menu.style.height = '72px'; // Match nav height
+                menu.style.borderRadius = '100px'; // Return to pill
+                if (menuHeader) menuHeader.style.borderRadius = '100px'; // Return header to pill
+
+                // Wait for transition to complete before hiding
+                document.body.style.overflow = '';
+
+                setTimeout(() => {
+                    menu.classList.add('opacity-0');
+                    menu.classList.add('invisible');
+                    // Reset position for next open
+                    menu.style.top = '';
+                    menu.style.left = '';
+                    menu.style.width = '';
+                    // Show the navbar again
+                    if (navbar) navbar.style.opacity = '1';
+                }, 300);
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const menu = document.getElementById('mobile-expanded-menu');
+                if (menu && !menu.classList.contains('invisible')) toggleMenu();
+            }
         });
+
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -665,16 +840,14 @@
             });
         }, observerOptions);
 
-        // Observe service cards for animation
-        document.querySelectorAll('.service-card').forEach(el => {
+        // Observe elements
+        document.querySelectorAll('.standard-card').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            el.style.transition = 'all 0.6s ease';
             observer.observe(el);
         });
     </script>
-
-    <script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
 </body>
 
 </html>
