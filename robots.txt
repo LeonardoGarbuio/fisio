@@ -1,0 +1,23 @@
+# INTENSIFISIO - Robots.txt
+# https://intensifisiopg.com.br
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://intensifisiopg.com.br/sitemap.xml
+
+# Allow all crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+# Disallow sensitive directories
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /.github/

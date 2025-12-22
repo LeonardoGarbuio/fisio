@@ -1,15 +1,30 @@
 {
-  "short_name": "ft-physio",
-  "name": "ft-physio",
+  "short_name": "INTENSIFISIO",
+  "name": "INTENSIFISIO - Fisioterapia Avançada em Ponta Grossa",
+  "description": "Clínica de fisioterapia referência nos Campos Gerais. Especialistas em reabilitação cardiopulmonar, neurológica, ortopédica, domiciliar e hospitalar.",
   "icons": [
+    {
+      "src": "../logo-n.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
     {
       "src": "favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     }
   ],
-  "start_url": ".",
+  "start_url": "../pages/homepage.html",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#E31E24",
+  "background_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "categories": [
+    "health",
+    "medical",
+    "fitness"
+  ],
+  "lang": "pt-BR",
+  "dir": "ltr"
 }
