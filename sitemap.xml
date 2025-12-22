@@ -3,7 +3,11 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-    
+
+User-agent: *
+Allow: /
+Sitemap: https://intensifisiopg.com.br/sitemap.xml
+
     <!-- Homepage -->
     <url>
         <loc>https://intensifisiopg.com.br/</loc>
