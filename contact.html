@@ -248,9 +248,9 @@
 <body class="bg-background text-text-primary">
     <!-- Floating Navigation -->
     <nav class="nav-floating">
-        <a href="index.html">
+        <div>
             <img src="images/0.png" alt="INTENSIFISIO" class="h-10 w-auto">
-        </a>
+        </div>
         <!-- Desktop Menu -->
         <div class="hidden lg:flex items-center gap-6">
             <a href="index.html">Início</a>
@@ -320,7 +320,7 @@
         <!-- Header (Matches Nav visual exactly) -->
         <div class="flex justify-between items-center px-6 h-[72px] w-full absolute top-0 left-0 bg-white/95 backdrop-blur-xl z-20 rounded-[100px] transition-all duration-300"
             id="mobile-menu-header" style="box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);">
-            <a href="index.html"><img src="images/0.png" alt="INTENSIFISIO" class="h-12 w-auto"></a>
+            <div><img src="images/0.png" alt="INTENSIFISIO" class="h-12 w-auto"></div>
             <button onclick="toggleMenu()"
                 class="text-primary hover:bg-gray-100 rounded-full p-2 transition-colors focus:outline-none"
                 aria-label="Fechar menu">
@@ -334,6 +334,20 @@
             id="mobile-menu-content">
             <!-- Spacer to push content below the absolute header -->
             <div style="height: 88px; width: 100%; flex-shrink: 0;"></div>
+
+            <!-- Início -->
+            <a href="index.html"
+                class="flex items-center gap-4 px-4 py-4 rounded-2xl hover:bg-accent/5 text-gray-800 hover:text-accent transition-all group">
+                <div
+                    class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-all">
+                    <svg class="w-6 h-6 text-accent group-hover:text-white" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                </div>
+                <span class="font-semibold text-lg">Início</span>
+            </a>
 
             <!-- Serviços -->
             <a href="services.html"
@@ -437,7 +451,7 @@
 
                 // Animate expansion
                 requestAnimationFrame(() => {
-                    menu.style.height = '420px'; // Expand height
+                    menu.style.height = '500px'; // Expand height
                     menu.style.borderRadius = '24px'; // Morph shape
                     // Also round the header less when expanded
                     if (menuHeader) menuHeader.style.borderRadius = '24px 24px 0 0';

@@ -795,6 +795,20 @@
             <!-- Spacer to push content below the absolute header -->
             <div style="height: 88px; width: 100%; flex-shrink: 0;"></div>
 
+            <!-- Início -->
+            <a href="index.html"
+                class="flex items-center gap-4 px-4 py-4 rounded-2xl hover:bg-accent/5 text-gray-800 hover:text-accent transition-all group">
+                <div
+                    class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-all">
+                    <svg class="w-6 h-6 text-accent group-hover:text-white" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                </div>
+                <span class="font-semibold text-lg">Início</span>
+            </a>
+
             <!-- Serviços -->
             <a href="services.html"
                 class="flex items-center gap-4 px-4 py-4 rounded-2xl hover:bg-accent/5 text-gray-800 hover:text-accent transition-all group">
@@ -1440,7 +1454,7 @@
 
                 // Animate expansion
                 requestAnimationFrame(() => {
-                    menu.style.height = '420px'; // Expand height
+                    menu.style.height = '500px'; // Expand height
                     menu.style.borderRadius = '24px'; // Morph shape
                     // Also round the header less when expanded
                     if (menuHeader) menuHeader.style.borderRadius = '24px 24px 0 0';
